@@ -1,0 +1,13 @@
+
+  #menu-1, #menu-2 {
+    left: 0 !important;
+    right: auto !important;
+}
+#popover-1, #popover-2, #popover-3 {
+    left: -1.25rem !important;
+    right: auto !important;
+}
+.kit-docs .header-anchor{
+    margin-left: 0 !important;
+    margin-right: 0.25em !important;
+}
