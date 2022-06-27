@@ -20,7 +20,7 @@
   import '@svelteness/kit-docs/client/styles/theme.css';
   import './../main.css';
   import { page } from '$app/stores';
-  let baseUrl = 'http://localhost:2000/';
+  let baseUrl = 'https://hadracha.1lev1.world/';
   import {
     Button,
     KitDocs,
@@ -100,7 +100,7 @@
     <div class="logo" slot="navbar-left">
       <Button href="/">
 
-       {@html `<img src="http://localhost:2000/favicon.png" alt="logo" height="60px" width="60px"/>`}
+       {@html `<img src="https://hadracha.1lev1.world/favicon.png" alt="logo" height="60px" width="60px"/>`}
       </Button>
     </div>
  
