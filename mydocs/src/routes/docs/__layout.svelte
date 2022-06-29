@@ -6,6 +6,7 @@
 
   export const load = createKitDocsLoader({
     sidebar: {
+            '/': null,
       '/docs': '/docs',
     },
   });
@@ -19,7 +20,9 @@
   import '@svelteness/kit-docs/client/styles/theme.css';
   import './../../main.css';
   import { page } from '$app/stores';
-  let baseUrl = 'https://hadracha.1lev1.world/';
+//  let baseUrl = 'https://hadracha.1lev1.world/';
+    let baseUrl = 'http://localhost:2000/';
+
   import {
     Button,
     KitDocs,
@@ -69,9 +72,11 @@
  
   /** @type {import('@svelteness/kit-docs').NavbarConfig} */
   const navbar = {
-    links: [{ title: 'המדריך', slug: '/docs', match: /\/docs/ }],
-  };
-  import ExperimentalIcon from '~icons/ri/test-tube-fill';
+    links: [
+       { title: 'הרשמה', slug: 'https://www.1lev1.world/' },
+      { title: 'מסלולים', slug: 'https://shalom.1lev1.world/' },
+      { title: 'המדריך', slug: '/docs', match: /\/docs/ },
+  ],};
 
   /** @type {import('@svelteness/kit-docs').SidebarConfig} */
   export const sidebar =  {
@@ -128,11 +133,9 @@
   <KitDocsLayout {navbar} {sidebar} {i18n}>
     <div class="logo" slot="navbar-left">
       <Button href="/">
-
-       {@html `<img src="https://hadracha.1lev1.world/favicon.png" alt="logo" height="60px" width="60px"/>`}
+       {@html `<img src="${baseUrl}favicon.png" alt="logo" height="60px" width="60px"/>`}
       </Button>
     </div>
- 
     <slot />
   </KitDocsLayout>
 </KitDocs>

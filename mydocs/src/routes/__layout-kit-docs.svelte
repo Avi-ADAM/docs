@@ -1,6 +1,3 @@
-<!-- This layout inherits from `routes/__layout-kit-docs.svelte` -->
-<!-- Learn more: https://kit.svelte.dev/docs/layouts#named-layouts-inheritance-chains -->
-
 <script context="module">
   export const prerender = true;
 
@@ -19,8 +16,9 @@
   import '@svelteness/kit-docs/client/styles/vars.css';
   import '@svelteness/kit-docs/client/styles/theme.css';
   import './../main.css';
-  import { page } from '$app/stores';
-  let baseUrl = 'https://hadracha.1lev1.world/';
+  //let baseUrl = 'https://hadracha.1lev1.world/';
+      let baseUrl = 'http://localhost:2000/';
+
   import {
     Button,
     KitDocs,
@@ -70,37 +68,29 @@
  
   /** @type {import('@svelteness/kit-docs').NavbarConfig} */
   const navbar = {
-    links: [{ title: 'המדריך', slug: '/docs', match: /\/docs/ }],
+    links: [
+       { title: 'הרשמה', slug: 'https://www.1lev1.world/' },
+      { title: 'מסלולים', slug: 'https://shalom.1lev1.world/' },
+      { title: 'המדריך', slug: '/docs', match: /\/docs/ },
+  ],
   };
-  import ExperimentalIcon from '~icons/ri/test-tube-fill';
 
   /** @type {import('@svelteness/kit-docs').SidebarConfig} */
-  export let sidebar;
-
-
-  const { activeCategory } = createSidebarContext(sidebar);
-
-  $: category = $activeCategory ? `${$activeCategory}: ` : '';
-  $: title = meta ? `${category}${meta.title} | KitDocs` : null;
-  $: description = meta?.description;
 </script>
 
 <svelte:head>
-  {#key $page.url.pathname}
-    {#if title}
-      <title>{title}</title>
-    {/if}
-    {#if description}
-      <meta name="description" content={description} />
-    {/if}
-  {/key}
+  
+      <title>המדריך 1❤️1</title>
+   
+      <meta name="description" content="הדרכה לשימוש באתר 1❤️1" />
+   
 </svelte:head>
 <KitDocs {meta}>
-  <KitDocsLayout {navbar} {sidebar} {i18n}>
+  <KitDocsLayout {navbar} {i18n}>
     <div class="logo" slot="navbar-left">
       <Button href="/">
 
-       {@html `<img src="https://hadracha.1lev1.world/favicon.png" alt="logo" height="60px" width="60px"/>`}
+       {@html `<img src="${baseUrl}favicon.png" alt="logo" height="60px" width="60px"/>`}
       </Button>
     </div>
  
