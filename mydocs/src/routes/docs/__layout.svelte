@@ -20,8 +20,8 @@
   import '@svelteness/kit-docs/client/styles/theme.css';
   import './../../main.css';
   import { page } from '$app/stores';
-//  let baseUrl = 'https://hadracha.1lev1.world/';
-    let baseUrl = 'http://localhost:2000/';
+ let baseUrl = 'https://hadracha.1lev1.world/';
+//    let baseUrl = 'http://localhost:2000/';
 
   import {
     Button,
