@@ -3,7 +3,7 @@
 
   export const load = createKitDocsLoader({
     sidebar: {
-      '/': null,
+       '/': null,
       '/docs': '/docs',
     },
   });
@@ -16,14 +16,16 @@
   import '@svelteness/kit-docs/client/styles/vars.css';
   import '@svelteness/kit-docs/client/styles/theme.css';
   import './../main.css';
-    import { variables } from '../tools/variables.js';
+  import { page } from '$app/stores';
+      import { variables } from '../tools/variables.js';
 
-  let baseUrl = variables.basePath // 'https://hadracha.1lev1.world/';
-  //    let baseUrl = 'http://localhost:2000/';
+  let baseUrl = variables.basePath
+ 
 
   import {
     Button,
     KitDocs,
+    SocialLink,
     KitDocsLayout,
     createKitDocsLoader,
     createSidebarContext,
@@ -74,31 +76,79 @@
        { title: 'הרשמה', slug: 'https://www.1lev1.world/' },
       { title: 'מסלולים', slug: 'https://shalom.1lev1.world/' },
       { title: 'המדריך', slug: '/docs', match: /\/docs/ },
-  ],
-  };
+  ],};
 
   /** @type {import('@svelteness/kit-docs').SidebarConfig} */
+  export const sidebar  =  {
+    links: {
+      'עלינו': [{
+          title: 'עלינו',
+          slug: `${baseUrl}docs/עלינו/עלינו`,
+      },{
+          title: 'ההסכמה',
+          slug: `${baseUrl}docs/עלינו/ההסכמה`,
+      },{
+          title: 'הרשמה',
+          slug: `${baseUrl}docs/עלינו/הרשמה`,
+      }
+    ],
+     'להתחיל': [{
+          title: 'ליחידים',
+          slug: `${baseUrl}docs/להתחיל/ליחידים`,
+      },{
+          title: 'ריקמה-חדשה',
+          slug: `${baseUrl}docs/להתחיל/ריקמה-חדשה`,
+      },
+    ],
+    'רקמות': [{
+          title: 'משימות',
+          slug: `${baseUrl}docs/רקמות/משימות`,
+      },{
+          title: 'משאבים',
+          slug: `${baseUrl}docs/רקמות/משאבים`,
+      },
+    ],
+    },
+  };
+
+
+  const { activeCategory } = createSidebarContext(sidebar);
+
+  $: category = $activeCategory ? `${$activeCategory}: ` : '';
+  $: title = meta ? `${category}${meta.title} | המדריך` : null;
+  $: description = meta?.description;
 </script>
 
 <svelte:head>
-  
-      <title>המדריך 1❤️1</title>
-   
-      <meta name="description" content="הדרכה לשימוש באתר 1❤️1" />
-   
+  {#key $page.url.pathname}
+    {#if title}
+      <title>{title}</title>
+    {/if}
+    {#if description}
+      <meta name="description" content={description} />
+    {/if}
+  {/key}
 </svelte:head>
+<span  dir="rtl">
 <KitDocs {meta}>
-  <KitDocsLayout {navbar} {i18n}>
-    <div class="logo" slot="navbar-left">
+  <KitDocsLayout {navbar} { sidebar} {i18n}>
+    <div  slot="navbar-left">
+      <div class="logo">
       <Button href="/">
-
        {@html `<img src="${baseUrl}favicon.png" alt="logo" height="60px" width="60px"/>`}
       </Button>
     </div>
- 
+  </div>
+   <div class="socials" slot="navbar-right-alt">
+      <SocialLink type="twitter" href="https://twitter.com/l0HTFzdlGHgPhoZ" />
+      <SocialLink type="discord" href="https://discord..gg/DNaMwrXzyS" />
+    <!--  <SocialLink type="gitHub" href="https://github.com/sveltejs/svelte" />-->
+    </div>
+
     <slot />
   </KitDocsLayout>
 </KitDocs>
+</span>
 <style>
  
   :global(:root) {

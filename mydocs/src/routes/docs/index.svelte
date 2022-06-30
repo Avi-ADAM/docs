@@ -5,7 +5,7 @@
   export function load() {
     return {
       status: 307,
-      redirect: '/docs/who-are-we/who-are-we',
+      redirect: '/docs/עלינו/עלינו',
     };
   }
 </script>
