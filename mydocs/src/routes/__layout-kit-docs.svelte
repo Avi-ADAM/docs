@@ -131,7 +131,7 @@
 </svelte:head>
 <span  dir="rtl">
 <KitDocs {meta}>
-  <KitDocsLayout {navbar} { sidebar} {i18n}>
+  <KitDocsLayout {navbar} {sidebar} {i18n}>
     <div  slot="navbar-left">
       <div class="logo">
       <Button href="/">
@@ -141,7 +141,7 @@
   </div>
    <div class="socials" slot="navbar-right-alt">
       <SocialLink type="twitter" href="https://twitter.com/l0HTFzdlGHgPhoZ" />
-      <SocialLink type="discord" href="https://discord..gg/DNaMwrXzyS" />
+      <SocialLink type="discord" href="https://discord.gg/w4MZ9yCQ" />
     <!--  <SocialLink type="gitHub" href="https://github.com/sveltejs/svelte" />-->
     </div>
 
